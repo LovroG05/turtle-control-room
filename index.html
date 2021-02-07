@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./styles.css">
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Turtle Control System</title>
+    </head>
+    <body onload="onLoad()" class="bg-secondary">
+        <nav class="navbar navbar-dark bg-dark shadow-sm fixed-top">
+            <a class="navbar-brand" href="#">Turtle Control System</a>
+            <div class="float-left">
+                <button class="btn-primary" onclick="changeTurtle(0)">Turtle 0</button>
+                <button class="btn-primary" onclick="changeTurtle(1)">Turtle 24</button>
+                <button class="btn-primary" onclick="changeTurtle(2)">Turtle 46</button>
+            </div>
+        </nav>
+
+        <div class="container bg-secondary">
+            <br>
+            <br>
+            <br>
+        </div>
+
+        <div class="container bg-dark" style="margin: 10px; padding: 20px;">
+            <h6 class="text-white">Turtle ID selected: </h6>
+            <p id="turtleID" class="text-white"></p>
+            <h6 class="text-white">Turtle fuel level: </h6>
+            <div class="progress">
+                <div id="fuel-progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="5120">0</div>
+            </div>
+        </div>
+        
+        <div class="container bg-dark" style="margin: 10px; padding: 20px;">
+            <h6 class="text-white">Command</h6>
+            <input type="text" id="command" name="command" class="form-control-sm">
+            <button id="submit" class="btn-primary" onClick="submit()">SUBMIT</button>
+        </div>
+
+        <div class="container bg-dark" style="margin: 10px; padding: 20px;">
+            <h6 class="text-white">Directive</h6>
+            <input type="text" id="directive" name="Predefined directive" class="form-control-sm">
+            <button id="submitPD" class="btn-primary" onClick="submitPD()">SUBMIT</button>
+        </div>
+
+        <div class="container bg-dark" style="margin: 10px; padding: 10px;">
+            <div class="row" style="margin: 10px; padding: 10px;">
+                <div class="col-*-*" style="margin: 5px; padding: 5px;">
+                    <div class="row">
+                        <button onclick="goUp()" class="btn-primary border border-dark" style="width: 70px;">Up</button>
+                    </div>
+                    <div class="row">
+                        <button onclick="goForward()" class="btn-primary border border-dark" style="width: 70px;">Go</button>
+                    </div>
+                    <div class="row">
+                        <button onclick="goDown()" class="btn-primary border border-dark" style="width: 70px;">Down</button>
+                    </div>
+                </div>
+
+                <div class="col-*-*" style="margin: 5px; padding: 5px;">
+                    <div class="row">
+                        <button onclick="turnLeft()" class="btn-primary border border-dark" style="width: 70px;">Left</button>
+                    </div>
+                    <div class="row">
+                        <button onclick="refuel()" class="btn-primary border border-dark" style="width: 70px;">Refuel</button>
+                    </div>
+                    <div class="row">
+                        <button onclick="turnRight()" class="btn-primary border border-dark" style="width: 70px;">Right</button>
+                    </div>
+                </div>
+
+                <div class="col-*-*" style="margin: 5px; padding: 5px;">
+                    <div class="row">
+                        <button onclick="digUp()" class="btn-primary border border-dark" style="width: 70px;">Up</button>
+                    </div>
+                    <div class="row">
+                        <button onclick="dig()" class="btn-primary border border-dark" style="width: 70px;">Dig</button>
+                    </div>
+                    <div class="row">
+                        <button onclick="digDown()" class="btn-primary border border-dark" style="width: 70px;">Down</button>
+                    </div>
+                </div>
+
+                <div class="col-*-*" style="margin: 5px; padding: 5px;">
+                    <div class="row">
+                        <button onclick="placeUp()" class="btn-primary border border-dark" style="width: 70px;">Up</button>
+                    </div>
+                    <div class="row">
+                        <button onclick="place()" class="btn-primary border border-dark" style="width: 70px;">Place</button>
+                    </div>
+                    <div class="row">
+                        <button onclick="placeDown()" class="btn-primary border border-dark" style="width: 70px;">Down</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container bg-dark" style="margin: 10px; padding: 25px;">
+            <button onclick="stripMine()" class="btn-primary border border-dark" style="width: 90px;">Stripmine</button>
+        </div>
+
+        <div class="container bg-dark" style="margin: 10px; padding: 10px;">
+            <h6 class="text-white" style="margin-left: 10px;">Inventory</h6>
+            <div class="row" style="margin: 0px; margin-left: 10px;">
+                <div id="d1" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(1)">
+                    <p id="i1" title="">0</p>
+                    <p id="t1" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d2" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(2)">
+                    <p id="i2" title="">0</p>
+                    <p id="t2" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d3" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(3)">
+                    <p id="i3" title="">0</p>
+                    <p id="t3" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d4" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(4)">
+                    <p id="i4" title="">0</p>
+                    <p id="t4" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+            </div>
+            <div class="row" style="margin: 0px; margin-left: 10px;">
+                <div id="d5" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(5)">
+                    <p id="i5" title="">0</p>
+                    <p id="t5" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d6" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(6)">
+                    <p id="i6" title="">0</p>
+                    <p id="t6" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d7" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(7)">
+                    <p id="i7" title="">0</p>
+                    <p id="t7" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d8" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(8)">
+                    <p id="i8" title="">0</p>
+                    <p id="t8" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+            </div>
+            <div class="row" style="margin: 0px; margin-left: 10px;">
+                <div id="d9" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(9)">
+                    <p id="i9" title="">0</p>
+                    <p id="t9" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d10" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(10)">
+                    <p id="i10" title="">0</p>
+                    <p id="t10" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d11" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(11)">
+                    <p id="i11" title="">0</p>
+                    <p id="t11" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d12" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(12)">
+                    <p id="i12" title="">0</p> 
+                    <p id="t12" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+            </div>
+            <div class="row" style="margin: 0px; margin-left: 10px;">
+                <div id="d13" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(13)">
+                    <p id="i13" title="">0</p>
+                    <p id="t13" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d14" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(14)">
+                    <p id="i14" title="">0</p>
+                    <p id="t14" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d15" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(15)">
+                    <p id="i15" title="">0</p>
+                    <p id="t15" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+                <div id="d16" class="col-*-* text-center slot" style="width: 50px; height: 50px;" onclick="selectParam(16)">
+                    <p id="i16" title="">0</p>
+                    <p id="t16" class="small align-text-top" style="font-size: 10px; margin-bottom: 5px; padding-bottom: 5px;"></p>
+                </div>
+            </div>
+            <div style="margin: 10px;">
+                <button id="update" onclick="updateInv()" class="btn-primary">UPDATE</button>
+            </div>
+        </div>
+    
+
+        <!-- <div class="container bg-dark" style="margin: 10px;">
+            <p class="text-primary">Messages</p>
+            <div id="logSub" class="padding: 5px; margin: 5px;">
+            </div>
+        </div> -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="./index.js"></script>
+        <script>
+            $( function() {
+                $( document ).tooltip();
+            });
+        </script>
+    </body>
+</html>
