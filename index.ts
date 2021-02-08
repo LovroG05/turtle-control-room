@@ -257,6 +257,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i1").innerHTML = "0";
+        document.getElementById("i1").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["2"]) {
@@ -266,6 +267,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i2").innerHTML = "0";
+        document.getElementById("i2").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["3"]) {
@@ -275,6 +277,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i3").innerHTML = "0";
+        document.getElementById("i3").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["4"]) {
@@ -284,6 +287,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i4").innerHTML = "0";
+        document.getElementById("i4").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["5"]) {
@@ -293,6 +297,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i5").innerHTML = "0";
+        document.getElementById("i5").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["6"]) {
@@ -302,6 +307,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i6").innerHTML = "0";
+        document.getElementById("i6").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["7"]) {
@@ -311,6 +317,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i7").innerHTML = "0";
+        document.getElementById("i7").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["8"]) {
@@ -320,6 +327,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i8").innerHTML = "0";
+        document.getElementById("i8").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["9"]) {
@@ -329,6 +337,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i9").innerHTML = "0";
+        document.getElementById("i9").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["10"]) {
@@ -338,6 +347,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i10").innerHTML = "0";
+        document.getElementById("i10").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["11"]) {
@@ -347,6 +357,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i11").innerHTML = "0";
+        document.getElementById("i11").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["12"]) {
@@ -356,6 +367,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i12").innerHTML = "0";
+        document.getElementById("i12").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["13"]) {
@@ -365,6 +377,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i13").innerHTML = "0";
+        document.getElementById("i13").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["14"]) {
@@ -374,6 +387,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i14").innerHTML = "0";
+        document.getElementById("i14").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["15"]) {
@@ -383,6 +397,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i15").innerHTML = "0";
+        document.getElementById("i15").setAttribute("title", "Empty");
     }
 
     if (current_turtle.inventory["16"]) {
@@ -392,6 +407,7 @@ function setInventory() {
     }
     else {
         document.getElementById("i16").innerHTML = "0";
+        document.getElementById("i16").setAttribute("title", "Empty");
     }
 
     setSelectedSlot();
